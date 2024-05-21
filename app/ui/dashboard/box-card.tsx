@@ -12,7 +12,7 @@ const BoxCard = ({ name, current_version, original_version, is_different }: Pack
     }
 
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-md shadow-gray-400 bg-gray-900 m-2">
+        <div className="max-w-sm h-350 rounded overflow-hidden shadow-md shadow-gray-400 bg-gray-900 m-2">
             <div className="font-bold text-m text-center item-center py-3">{name}</div>
             <div className="grid grid-cols-3 m-2">
                 <div className="text-m text-center col-span-1">Current:</div>
