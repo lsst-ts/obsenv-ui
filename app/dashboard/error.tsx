@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
 const Error = ({
   error,
@@ -15,7 +15,7 @@ const Error = ({
   }, [error])
 
   return (
-    <div className="h-full flex flex-col items-center justify-center p-4">
+    <div className="flex h-full flex-col items-center justify-center p-4">
       <h2 className="text-center">Something went wrong!</h2>
       <p className="p-4">{error.message}</p>
       <button
