@@ -39,13 +39,9 @@ const BoxCard = ({
               'bg-gray-800',
               'p-3',
               {
-                'hover:bg-gray-600': isAuthed,
-                'active:bg-gray-700': isAuthed,
-                'focus:outline-none': isAuthed,
-                'focus:ring': isAuthed,
-                'focus:ring-gray-300': isAuthed,
-                'fg-gray-200': !isAuthed,
-                'text-gray-700': !isAuthed,
+                'hover:bg-gray-600 focus:outline-none focus:ring focus:ring-gray-300 active:bg-gray-700':
+                  isAuthed,
+                'fg-gray-200 text-gray-700': !isAuthed,
               },
             )}
           >
