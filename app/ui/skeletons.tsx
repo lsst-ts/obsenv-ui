@@ -1,4 +1,4 @@
-export const SkeletonBox = () => {
+const SkeletonBox = () => {
   return (
     <div className="max-w-sm overflow-hidden rounded bg-gray-900 shadow-md shadow-gray-400">
       <div className="item-center animate-pulse bg-gray-600 py-3" />
@@ -8,22 +8,49 @@ export const SkeletonBox = () => {
         <div className="col-span-1 h-10 animate-pulse bg-gray-600" />
         <div className="col-span-2 h-10 animate-pulse bg-gray-600 px-2" />
       </div>
-      <div className="mx-2 mb-4 grid grid-cols-6">
-        <div className="col-span-1 col-end-7">
-          <div className="h-10 animate-pulse rounded bg-gray-800 p-3" />
+      <div className="mx-4 mb-4 grid grid-cols-4">
+        <div className="col-span-1 col-end-5">
+          <div className="h-10 animate-pulse rounded shadow-md shadow-gray-400 bg-gray-800 p-3" />
         </div>
       </div>
     </div>
   )
 }
 
-export const Skeleton = () => {
-  console.log('Skeleton')
+const SkeletonFooter = () => {
   return (
-    <div className="z-40 mb-4 grid grid-cols-3 gap-y-5">
-      <SkeletonBox />
-      <SkeletonBox />
-      <SkeletonBox />
-    </div>
+    <footer>
+      <div className="flex flex-row items-centered">
+        <p>Last Updated:</p>
+        <div className="flex-grow h-4 animate-pulse bg-gray-600 items-centered" />
+      </div>
+    </footer>
+  )
+}
+
+const SkeletonPackageTable = () => {
+  return (
+    <section className="ml-50">
+      <div className="max-w-m mx-5 px-4">
+        <h2 className="full-width item-center font-semi-bold p-3 text-center text-xl">
+          Package Information
+        </h2>
+        <div className="item-center mb-4 grid justify-center gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {
+            [...Array(6)].map((_, i) =>
+              <SkeletonBox key={i} />
+            )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export const Skeleton = () => {
+  return (
+    <>
+      <SkeletonPackageTable />
+      <SkeletonFooter />
+    </>
   )
 }

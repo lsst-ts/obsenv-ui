@@ -13,7 +13,7 @@ const BoxCard = ({
   const [isAuthed, setAuthed] = useState(false)
 
   const onClick = () => {
-    console.log('Edit button clicked')
+    console.log('Change button clicked')
   }
 
   return (
@@ -27,8 +27,8 @@ const BoxCard = ({
         <div className="text-m col-span-1 text-center">Original:</div>
         <div className="text-m col-span-2 px-2">{original_version}</div>
       </div>
-      <div className="mx-4 mb-4 grid grid-cols-6">
-        <div className="col-span-1 col-end-7">
+      <div className="mx-4 mb-4 grid grid-cols-4">
+        <div className="col-span-1 col-end-5">
           <button
             aria-disabled={!isAuthed}
             onClick={onClick}
@@ -45,7 +45,7 @@ const BoxCard = ({
               },
             )}
           >
-            Edit
+            Change
           </button>
         </div>
       </div>
