@@ -9,3 +9,10 @@ export type PackageInfo = {
   original_version: string
   is_different: boolean
 }
+
+export type UserData = {
+  loggedIn: boolean
+  name: string
+  username: string
+  groups: string[]
+}
