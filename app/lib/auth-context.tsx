@@ -7,7 +7,7 @@ interface Authed {
   setAuthed: Function
 }
 
-export const AuthContext = createContext<Authed | null>(null)
+export const AuthContext = createContext<Authed>({} as Authed)
 AuthContext.displayName = 'AuthContext'
 
 export default function AuthProvider({

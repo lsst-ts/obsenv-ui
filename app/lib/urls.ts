@@ -6,7 +6,8 @@
  */
 export function getLoginUrl(currentUrl: string): string {
   const url = new URL('/login', currentUrl);
-  url.searchParams.append('rd', currentUrl);
+  const homeUrl = new URL('/obsenv-ui', currentUrl)
+  url.searchParams.append('rd', homeUrl.toString());
   return url.href;
 }
 

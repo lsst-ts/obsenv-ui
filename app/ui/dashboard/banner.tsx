@@ -1,19 +1,22 @@
 'use client'
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { getUserData } from "@/app/lib/actions"
 import { UserData } from "@/app/lib/definitions"
 import UserMenu from "@/app/ui/dashboard/user-menu"
+import { AuthContext } from "@/app/lib/auth-context"
 
 const Banner = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false)
-  const [userData, setUserData] = useState({} as UserData)
+  let [isLoggedIn, setLoggedIn] = useState(false)
+  let [userData, setUserData] = useState({} as UserData)
+  let { setAuthed } = useContext(AuthContext)
 
   const doLogin = async (event: any) => {
     event.preventDefault()
     let d: UserData = await getUserData()
     setUserData(d)
     userData?.loggedIn === undefined ? setLoggedIn(false) : setLoggedIn(userData?.loggedIn)
+    setAuthed(true)
   }
 
   return (

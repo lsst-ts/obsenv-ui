@@ -14,5 +14,10 @@ export type UserData = {
   loggedIn: boolean
   name: string
   username: string
-  groups: string[]
+  groups: Array<Group>
+}
+
+export type Group = {
+  name: string
+  id: number
 }

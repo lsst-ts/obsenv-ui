@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext } from 'react'
 import clsx from 'clsx'
 import { PackageInfo } from '@/app/lib/definitions'
+import { AuthContext } from '@/app/lib/auth-context'
 
 const BoxCard = ({
   name,
@@ -10,7 +11,8 @@ const BoxCard = ({
   original_version,
   is_different,
 }: PackageInfo) => {
-  const [isAuthed, setAuthed] = useState(false)
+
+  let isAuthed = useContext(AuthContext)?.isAuthed
 
   const onClick = () => {
     console.log('Change button clicked')

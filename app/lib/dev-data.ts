@@ -5,7 +5,15 @@ export const devAuthedUserData = (): UserData => {
     "loggedIn": false,
     "username": "vera",
     "name": "Vera C. Rubin",
-    "groups": ["normal-users", "authed-users"]
+    "groups": [
+      {
+        "name": "normal-users",
+        "id": 1
+      },
+      {
+        "name": "authed-users",
+        "id": 2
+      }]
   }
 }
 
@@ -14,6 +22,9 @@ export const devUnauthedUserData = (): UserData => {
     "loggedIn": false,
     "username": "demouser",
     "name": "Demo User",
-    "groups": ["normal-users"]
+    "groups": [{
+      "name": "normal-users",
+      "id": 1
+    }]
   }
 }
