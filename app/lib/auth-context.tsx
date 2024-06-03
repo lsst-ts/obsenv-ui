@@ -17,5 +17,9 @@ export default function AuthProvider({
 }) {
   let [isAuthed, setAuthed] = useState(false)
 
-  return <AuthContext.Provider value={{isAuthed: isAuthed, setAuthed: setAuthed}}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{ isAuthed: isAuthed, setAuthed: setAuthed }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }

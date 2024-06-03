@@ -10,7 +10,7 @@ const SkeletonBox = () => {
       </div>
       <div className="mx-4 mb-4 grid grid-cols-4">
         <div className="col-span-1 col-end-5">
-          <div className="h-10 animate-pulse rounded shadow-md shadow-gray-400 bg-gray-800 p-3" />
+          <div className="h-10 animate-pulse rounded bg-gray-800 p-3 shadow-md shadow-gray-400" />
         </div>
       </div>
     </div>
@@ -20,9 +20,9 @@ const SkeletonBox = () => {
 const SkeletonFooter = () => {
   return (
     <footer>
-      <div className="flex flex-row items-centered">
+      <div className="items-centered flex flex-row">
         <p>Last Updated:</p>
-        <div className="flex-grow h-4 animate-pulse bg-gray-600 items-centered" />
+        <div className="items-centered h-4 flex-grow animate-pulse bg-gray-600" />
       </div>
     </footer>
   )
@@ -36,10 +36,9 @@ const SkeletonPackageTable = () => {
           Package Information
         </h2>
         <div className="item-center mb-4 grid justify-center gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {
-            [...Array(6)].map((_, i) =>
-              <SkeletonBox key={i} />
-            )}
+          {[...Array(6)].map((_, i) => (
+            <SkeletonBox key={i} />
+          ))}
         </div>
       </div>
     </section>

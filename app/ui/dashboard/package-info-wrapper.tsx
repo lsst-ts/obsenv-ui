@@ -11,7 +11,7 @@ const PackageInfoWrapper = async () => {
       <PackageTable packages={response.packages} />
       <Footer datetime={response.fetch_datetime} />
     </>
-  );
+  )
 }
 
 export default PackageInfoWrapper

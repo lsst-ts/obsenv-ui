@@ -11,7 +11,6 @@ const BoxCard = ({
   original_version,
   is_different,
 }: PackageInfo) => {
-
   let isAuthed = useContext(AuthContext)?.isAuthed
 
   const onClick = () => {
@@ -29,7 +28,7 @@ const BoxCard = ({
         <div className="text-m col-span-1 text-center">Original:</div>
         <div className="text-m col-span-2 px-2">{original_version}</div>
       </div>
-      <div className="flex mx-4 mb-4 grid md:grid-cols-3 lg:grid-cols-4">
+      <div className="mx-4 mb-4 flex grid md:grid-cols-3 lg:grid-cols-4">
         <div className="col-span-1 col-end-4 md:col-end-5">
           <button
             aria-disabled={!isAuthed}

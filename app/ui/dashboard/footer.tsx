@@ -1,4 +1,4 @@
-import { formatIsoString } from "@/app/lib/datestr-format";
+import { formatIsoString } from '@/app/lib/datestr-format'
 
 const Footer = ({ datetime }: { datetime: string }) => {
   const formatted = formatIsoString(datetime)
@@ -11,4 +11,4 @@ const Footer = ({ datetime }: { datetime: string }) => {
   )
 }
 
-export default Footer;
+export default Footer

@@ -6,7 +6,7 @@ const sleep = (delay: number) =>
 export async function getPackages() {
   const url = `${process.env.OBSENV_API}/package_versions`
   console.log(url)
-  const res = await fetch(url, {cache: 'no-store'})
+  const res = await fetch(url, { cache: 'no-store' })
   if (!res.ok) {
     throw new Error('Unable to fetch package data.')
   }
