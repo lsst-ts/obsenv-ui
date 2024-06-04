@@ -28,8 +28,8 @@ const BoxCard = ({
         <div className="text-m col-span-1 text-center">Original:</div>
         <div className="text-m col-span-2 px-2">{original_version}</div>
       </div>
-      <div className="mx-4 mb-4 flex grid md:grid-cols-3 lg:grid-cols-4">
-        <div className="col-span-1 col-end-4 md:col-end-5">
+      <div className="items-centered mx-4 mb-4 flex grid grid-cols-4">
+        <div className="col-span-1 col-end-5">
           <button
             aria-disabled={!isAuthed}
             onClick={onClick}
@@ -38,8 +38,7 @@ const BoxCard = ({
               'shadow-md',
               'shadow-gray-400',
               'bg-gray-800',
-              'p-3',
-              'mx-2',
+              'p-2',
               {
                 'hover:bg-gray-600 focus:outline-none focus:ring focus:ring-gray-300 active:bg-gray-700':
                   isAuthed,
