@@ -1,9 +1,29 @@
+import { redirect } from 'next/navigation'
+import { getLogout } from '@/app/lib/actions'
+import { UserState } from '@/app/lib/definitions'
+import { AuthContext } from '@/app/lib/auth-context'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
-const UserMenu = ({ username }: { username: string }) => {
+const UserMenu = ({ userState }: { userState: UserState }) => {
   const [isClicked, setClicked] = useState(false)
+  const [doRedirect, setRedirect] = useState(false)
+  const { setAuthed } = useContext(AuthContext)
+
+  const doLogout = async (event: any) => {
+    event.preventDefault()
+    let isLoggedIn = !(await getLogout())
+    console.log(isLoggedIn)
+    userState.loggedIn = isLoggedIn
+    userState.authorized = false
+    setAuthed(userState.authorized)
+    setRedirect(true)
+  }
+
+  if (doRedirect) {
+    redirect('/dashboard')
+  }
 
   return (
     <div className="items-centered relative col-span-1 col-end-7 flex place-content-center">
@@ -13,7 +33,7 @@ const UserMenu = ({ username }: { username: string }) => {
         }}
       >
         <div className="items-centered flex justify-between">
-          <span className="pr-2 text-xl">{username}</span>
+          <span className="pr-2 text-xl">{userState.data.username}</span>
           <ChevronDownIcon
             className={clsx('h-8', 'w-8', 'pl-2', {
               'rotate-180': isClicked,
@@ -38,7 +58,7 @@ const UserMenu = ({ username }: { username: string }) => {
           },
         )}
       >
-        <a href="/logout">Log out</a>
+        <button onClick={doLogout} className='text-right'>Log out</button>
       </div>
     </div>
   )
