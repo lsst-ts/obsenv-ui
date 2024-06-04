@@ -8,9 +8,7 @@ const Dashboard = () => {
   return (
     <main>
       <Banner />
-      <aside className="w-50 fixed left-0 flex h-screen flex-col">
-        <Toolbar />
-      </aside>
+      <Toolbar />
       <Suspense fallback={<Skeleton />}>
         <PackageInfoWrapper />
       </Suspense>

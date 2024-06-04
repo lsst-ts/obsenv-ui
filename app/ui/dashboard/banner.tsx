@@ -19,8 +19,8 @@ const Banner = () => {
   }
 
   return (
-    <header className="flex grid grid-cols-6 md:grid-cols-4 flex-row">
-      <h1 className="h-50 col-span-4 md:col-span-2 py-3 pl-4 text-2xl">
+    <header className="h-24 fixed top-0 flex grid grid-cols-6 md:grid-cols-4 flex-row">
+      <h1 className="col-span-4 md:col-span-2 py-3 pl-4 text-2xl">
         Rubin Observatory Environment Management
       </h1>
       {!userState.loggedIn ? (
