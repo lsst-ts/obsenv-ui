@@ -58,7 +58,9 @@ const UserMenu = ({ userState }: { userState: UserState }) => {
           },
         )}
       >
-        <button onClick={doLogout} className='text-right'>Log out</button>
+        <button onClick={doLogout} className="text-right">
+          Log out
+        </button>
       </div>
     </div>
   )

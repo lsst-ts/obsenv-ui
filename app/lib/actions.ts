@@ -62,7 +62,7 @@ export const getUserState = async (): Promise<UserState> => {
     } else {
       data = devUnauthedUserData()
     }
-    userState = { loggedIn: true, authorized:false, data: data }
+    userState = { loggedIn: true, authorized: false, data: data }
   } else if (env === 'production') {
     let baseUrl = process.env.BASE_URL
     if (baseUrl === undefined) {
@@ -74,12 +74,19 @@ export const getUserState = async (): Promise<UserState> => {
       throw new Error('Unable to fetch user information data.')
     }
     data = await res.json()
-    userState = { loggedIn: data && data.hasOwnProperty('username'), authorized: false, data: data}
+    userState = {
+      loggedIn: data && data.hasOwnProperty('username'),
+      authorized: false,
+      data: data,
+    }
   } else {
     throw Error(`Don't know how to get user data for ${env} environment!`)
   }
   const auth_group = process.env.AUTH_GROUP
-  userState.authorized = data.groups.find(({ name }) => name === auth_group) === undefined ? false : true
+  userState.authorized =
+    data.groups.find(({ name }) => name === auth_group) === undefined
+      ? false
+      : true
 
   return new Promise<UserState>((resolve, reject) => {
     resolve(userState), reject('')
