@@ -60,15 +60,15 @@ export async function getLogout() {
 
 export async function getUserData(): Promise<UserData> {
   var data: UserData
-  let devEnv = process.env?.APP_ENV === undefined ? false : true
-  if (devEnv) {
+  let env = `${process.env?.NODE_ENV}`
+  if (env === 'development') {
     let userType = `${process.env.USER_TYPE}`
     if (userType === 'AUTHED') {
       data = { ...devAuthedUserData(), loggedIn: true }
     } else {
       data = { ...devUnauthedUserData(), loggedIn: true }
     }
-  } else {
+  } else if (env === 'production') {
     let baseUrl = process.env.BASE_URL
     if (baseUrl === undefined) {
       throw Error('Base URL must be provided to application!')
@@ -80,6 +80,8 @@ export async function getUserData(): Promise<UserData> {
     }
     const tempData = await res.json()
     data = { ...tempData, loggedIn: true }
+  } else {
+    throw Error(`Don\'t know how to fetch user data in ${env} environment.`)
   }
   return new Promise<UserData>((resolve, reject) => {
     resolve(data), reject('')

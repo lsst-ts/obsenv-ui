@@ -6,7 +6,7 @@ const UserMenu = ({ username }: { username: string }) => {
   const [isClicked, setClicked] = useState(false)
 
   return (
-    <div className="items-centered col-span-1 col-end-7 place-content-center">
+    <div className="items-centered relative col-span-1 col-end-7 flex place-content-center">
       <button
         onClick={() => {
           setClicked(!isClicked)
@@ -24,13 +24,14 @@ const UserMenu = ({ username }: { username: string }) => {
       <div
         className={clsx(
           'flex',
-          'flex-column',
+          'flex-col',
           'absolute',
+          '-bottom-6',
           'rounded',
           'bg-gray-600',
           'p-2',
           'w-32',
-          'justify-end',
+          'text-right',
           {
             visible: isClicked,
             invisible: !isClicked,

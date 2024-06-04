@@ -7,18 +7,16 @@ import UserMenu from '@/app/ui/dashboard/user-menu'
 import { AuthContext } from '@/app/lib/auth-context'
 
 const Banner = () => {
-  let [isLoggedIn, setLoggedIn] = useState(false)
-  let [userData, setUserData] = useState({} as UserData)
-  let { setAuthed } = useContext(AuthContext)
+  const [isLoggedIn, setLoggedIn] = useState(false)
+  const [userData, setUserData] = useState({} as UserData)
+  const { setAuthed } = useContext(AuthContext)
 
   const doLogin = async (event: any) => {
     event.preventDefault()
     let d: UserData = await getUserData()
-    setUserData(d)
-    userData?.loggedIn === undefined
-      ? setLoggedIn(false)
-      : setLoggedIn(userData?.loggedIn)
-    setAuthed(true)
+    setUserData((userData) => ({ ...userData, ...d }))
+    setLoggedIn(d.loggedIn)
+    setAuthed(d.groups.find(({ name }) => name === 'authed-users'))
   }
 
   return (
