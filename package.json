@@ -42,6 +42,6 @@
     "vitest": "^1.6.0"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix"
+    "*.{js,jsx,ts,tsx,html,css}": "npm run format:fix --"
   }
 }
