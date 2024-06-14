@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], preload: true })
 
 export const metadata: Metadata = {
-  title: 'Observator Environment UI',
+  title: 'Observatory Environment UI',
   description:
     'A user interface to handle viewing and managing the Observatory Environment.',
 }
