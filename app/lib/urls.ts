@@ -6,7 +6,7 @@
  */
 export function getLoginUrl(currentUrl: string): string {
   const url = new URL('/login', currentUrl)
-  const homeUrl = new URL('/obsenv-ui', currentUrl)
+  const homeUrl = new URL('/obsenv-management', currentUrl)
   url.searchParams.append('rd', homeUrl.toString())
   return url.href
 }
@@ -17,7 +17,7 @@ export function getLoginUrl(currentUrl: string): string {
  */
 export function getLogoutUrl(currentUrl: string): string {
   const logoutUrl = new URL('/logout', currentUrl)
-  const homeUrl = new URL('/obsenv-ui', currentUrl)
+  const homeUrl = new URL('/obsenv-management', currentUrl)
   logoutUrl.searchParams.append('rd', homeUrl.toString())
   return logoutUrl.href
 }
