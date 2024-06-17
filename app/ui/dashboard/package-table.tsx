@@ -1,6 +1,4 @@
-import { Suspense } from 'react'
 import BoxCard from './box-card'
-import { Skeleton } from '@/app/ui/skeletons'
 import { PackageInfo } from '@/app/lib/definitions'
 
 const PackageTable = async ({ packages }: { packages: Array<PackageInfo> }) => {

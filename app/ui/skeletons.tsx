@@ -30,8 +30,8 @@ const SkeletonFooter = () => {
 
 const SkeletonPackageTable = () => {
   return (
-    <section className="ml-50">
-      <div className="max-w-m mx-5 px-4">
+    <section className="ml-9 mt-24">
+      <div className="max-w-m m-5 p-4">
         <h2 className="full-width item-center font-semi-bold p-3 text-center text-xl">
           Package Information
         </h2>
