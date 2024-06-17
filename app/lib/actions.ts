@@ -71,6 +71,8 @@ export const getUserState = async (): Promise<UserState> => {
     const userInfoUrl = new URL('/auth/api/v1/user-info', baseUrl)
     const res = await fetch(userInfoUrl, { cache: 'no-store' })
     if (!res.ok) {
+      console.log(res.status)
+      console.log(res.statusText)
       throw new Error('Unable to fetch user information data.')
     }
     data = await res.json()
