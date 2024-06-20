@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { devAuthedUserData, devUnauthedUserData } from './dev-data'
 import { UserData, UserState } from './definitions'
 import { getLoginUrl, getLogoutUrl } from './urls'
+import { cookies, headers } from 'next/headers'
 
 export async function refreshPackageInfo() {
   revalidatePath('dashboard')
@@ -21,6 +22,14 @@ export const getLogin = async () => {
     const loginUrl = getLoginUrl(baseUrl)
     const res = await fetch(loginUrl)
     if (res.ok) {
+      cookies()
+        .getAll()
+        .map((cookie) => {
+          console.log(`${cookie.name}: ${cookie.value}`)
+        })
+      for (const pair of headers().entries()) {
+        console.log(`${pair[0]}: ${pair[1]}`)
+      }
       return true
     } else {
       throw Error('Could not login!')
