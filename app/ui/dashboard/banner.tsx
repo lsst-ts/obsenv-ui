@@ -19,14 +19,14 @@ const Banner = () => {
   }
 
   return (
-    <header className="fixed top-0 z-10 flex grid h-24 w-max grid-cols-3 flex-row backdrop-blur-lg md:grid-cols-5">
+    <header className="fixed top-0 z-10 flex grid h-24 w-screen grid-cols-3 flex-row backdrop-blur-lg md:grid-cols-5">
       <h1 className="col-span-2 py-3 pl-4 text-lg md:col-span-3 md:text-xl">
         Rubin Observatory Environment Management
       </h1>
       {!userState.loggedIn ? (
         <button
           onClick={doLogin}
-          className="col-span-1 col-end-4 hover:bg-gray-600 focus:outline-none active:bg-gray-700 md:col-end-6"
+          className="col-span-1 col-end-4 hover:bg-gray-600 focus:outline-none active:bg-gray-700 md:col-end-6 md:text-lg"
         >
           Login
         </button>

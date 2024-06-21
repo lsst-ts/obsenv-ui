@@ -26,7 +26,7 @@ const UserMenu = ({ userState }: { userState: UserState }) => {
   }
 
   return (
-    <div className="items-centered relative col-span-1 col-end-7 flex place-content-center">
+    <div className="items-centered relative col-span-1 col-end-4 flex place-content-center md:col-end-6">
       <button
         onClick={() => {
           setClicked(!isClicked)
