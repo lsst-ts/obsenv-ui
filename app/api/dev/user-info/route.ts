@@ -6,7 +6,7 @@ import { devAuthedUserData, devUnauthedUserData } from '@/app/lib/dev-data'
 export async function GET() {
   let userType = process.env.NEXT_PUBLIC_USER_TYPE
   var info: UserData
-  if (userType === 'AUTHED') {
+  if (userType === 'AUTHED' || userType === undefined) {
     info = devAuthedUserData()
   } else if (userType === 'NON-AUTHED') {
     info = devUnauthedUserData()
