@@ -40,6 +40,8 @@ function useUserState() {
     userState.data = data
 
     const auth_group = process.env.NEXT_PUBLIC_AUTH_GROUP
+    console.log(auth_group)
+    console.log(data.groups)
     userState.authorized =
       data.groups.find(({ name }) => name === auth_group) === undefined
         ? false
