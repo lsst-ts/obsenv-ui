@@ -1,3 +1,4 @@
+'use client'
 import useSWR, { Fetcher } from 'swr'
 import { UserData, UserState } from '@/app/lib/definitions'
 
@@ -39,11 +40,10 @@ function useUserState() {
     userState.loggedIn = isLoggedIn
     userState.data = data
 
-    const auth_group = process.env.NEXT_PUBLIC_AUTH_GROUP
-    console.log(auth_group)
-    console.log(data.groups)
+    const env = process.env
     userState.authorized =
-      data.groups.find(({ name }) => name === auth_group) === undefined
+      data.groups.find(({ name }) => name === env.NEXT_PUBLIC_AUTH_GROUP) ===
+      undefined
         ? false
         : true
   }
