@@ -40,10 +40,9 @@ function useUserState() {
     userState.loggedIn = isLoggedIn
     userState.data = data
 
-    const env = process.env
+    const auth_group = process.env['NEXT_PUBLIC_AUTH_GROUP']
     userState.authorized =
-      data.groups.find(({ name }) => name === env.NEXT_PUBLIC_AUTH_GROUP) ===
-      undefined
+      data.groups.find(({ name }) => name === auth_group) === undefined
         ? false
         : true
   }
