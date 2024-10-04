@@ -7,6 +7,8 @@ import { getAuthedGroup } from '@/app/lib/actions'
 
 const Banner = () => {
   const [authGroup, setAuthGroup] = useState('')
+  const { userState } = useUserState(authGroup)
+  const { setAuthed } = useContext(AuthContext)
 
   useEffect(() => {
     const findAuthGroup = async () => {
@@ -15,9 +17,6 @@ const Banner = () => {
     }
     findAuthGroup()
   }, [authGroup])
-
-  const { userState } = useUserState(authGroup)
-  const { setAuthed } = useContext(AuthContext)
 
   useEffect(() => {
     setAuthed(userState.authorized)
