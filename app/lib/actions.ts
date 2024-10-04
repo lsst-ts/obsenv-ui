@@ -10,6 +10,11 @@ export async function refreshPackageInfo() {
   revalidatePath('dashboard')
 }
 
+export async function getAuthedGroup() {
+  let authed_group = process.env.AUTH_GROUP
+  return authed_group
+}
+
 export const getLogin = async () => {
   let env = process.env.NODE_ENV
   if (env === 'development') {

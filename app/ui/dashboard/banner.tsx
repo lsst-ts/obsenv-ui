@@ -1,13 +1,27 @@
 'use client'
 
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import useUserState from '@/app/hooks/use-user-state'
 import { AuthContext } from '@/app/lib/auth-context'
+import { getAuthedGroup } from '@/app/lib/actions'
 
 const Banner = () => {
-  const { userState } = useUserState()
+  const [authGroup, setAuthGroup] = useState('')
+
+  useEffect(() => {
+    const findAuthGroup = async () => {
+      let ag = await getAuthedGroup()
+      setAuthGroup(ag === undefined ? '' : ag)
+    }
+    findAuthGroup()
+  }, [authGroup])
+
+  const { userState } = useUserState(authGroup)
   const { setAuthed } = useContext(AuthContext)
-  setAuthed(userState.authorized)
+
+  useEffect(() => {
+    setAuthed(userState.authorized)
+  }, [userState])
 
   return (
     <header className="fixed top-0 z-10 flex grid h-24 w-screen grid-cols-3 flex-row backdrop-blur-lg md:grid-cols-5">

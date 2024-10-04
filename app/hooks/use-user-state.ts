@@ -9,7 +9,7 @@ const fetcher: Fetcher<UserData, string> = (api: string) =>
  * A React hook for getting data from the `/auth/user-info` endpoint and
  * establishing in general whether the user is logged in.
  */
-function useUserState() {
+function useUserState(authGroup: string) {
   var userState: UserState = {
     loggedIn: false,
     authorized: false,
@@ -40,9 +40,8 @@ function useUserState() {
     userState.loggedIn = isLoggedIn
     userState.data = data
 
-    const auth_group = process.env['NEXT_PUBLIC_AUTH_GROUP']
     userState.authorized =
-      data.groups.find(({ name }) => name === auth_group) === undefined
+      data.groups.find(({ name }) => name === authGroup) === undefined
         ? false
         : true
   }
