@@ -1,0 +1,13 @@
+node_modules/
+**/node_modules
+**/Dockerfile
+**/.next/
+**/.turbo/
+.pre-commit-config.yaml
+.prettierrc
+docs/
+.venv/
+.nox/
+.husky/
+.vscode/
+.env.local
