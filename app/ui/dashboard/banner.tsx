@@ -20,7 +20,7 @@ const Banner = () => {
 
   useEffect(() => {
     setAuthed(userState.authorized)
-  }, [userState.authorized])
+  }, [setAuthed, userState.authorized])
 
   return (
     <header className="fixed top-0 z-10 flex grid h-24 w-screen grid-cols-3 flex-row backdrop-blur-lg md:grid-cols-5">
