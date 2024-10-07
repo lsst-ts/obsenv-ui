@@ -44,5 +44,6 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,html,css}": "npm run format:fix --"
-  }
+  },
+  "type": "module"
 }
