@@ -1,10 +1,13 @@
 'use client'
 
+import { useContext } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { PackageUpdate } from '@/app/lib/definitions'
 import { updatePackage } from '@/app/lib/actions'
+import { AuthContext } from '@/app/lib/auth-context'
 
 const Form = () => {
+  let autherUsername = useContext(AuthContext)?.authedUser.username
   const searchParams = useSearchParams()
   const packageName = searchParams.get('package_name')
 
@@ -18,7 +21,7 @@ const Form = () => {
       name: packageName === null ? '' : packageName,
       version: versionValue,
       is_tag: isTagValue,
-      username: 'test',
+      username: autherUsername,
     }
     console.log(info)
     await updatePackage(info)

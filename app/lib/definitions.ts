@@ -27,6 +27,11 @@ export type UserState = {
   data: UserData
 }
 
+export type AuthedUser = {
+  username: string
+  authorized: boolean
+}
+
 export type PackageUpdate = {
   name: string
   version: string
