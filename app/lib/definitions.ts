@@ -26,3 +26,10 @@ export type UserState = {
   authorized: boolean
   data: UserData
 }
+
+export type PackageUpdate = {
+  name: string
+  version: string
+  is_tag: boolean
+  username: string
+}

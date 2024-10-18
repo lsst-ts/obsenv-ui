@@ -1,19 +1,33 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
+import { PackageUpdate } from '@/app/lib/definitions'
+import { updatePackage } from '@/app/lib/actions'
 
 const Form = () => {
   const searchParams = useSearchParams()
-  const package_name = searchParams.get('package_name')
+  const packageName = searchParams.get('package_name')
 
-  function dispatch(formData: FormData) {
+  const dispatch = async (formData: FormData) => {
     console.log('OK')
+    const version = formData.get('version')
+    const versionValue = version === null ? '' : version.toString()
+    const isTag = formData.get('isTag')
+    const isTagValue = isTag === null ? false : !!isTag.toString()
+    const info: PackageUpdate = {
+      name: packageName === null ? '' : packageName,
+      version: versionValue,
+      is_tag: isTagValue,
+      username: 'test',
+    }
+    console.log(info)
+    await updatePackage(info)
   }
 
   return (
     <form action={dispatch} className="ml-3 mt-3 flex grid grid-cols-4">
       <div className="col-span-4 py-3">
-        <label>Package Name: {package_name}</label>
+        <label>Package Name: {packageName}</label>
       </div>
       <div className="col-span-4 py-3">
         <label className="pr-2">Version</label>
