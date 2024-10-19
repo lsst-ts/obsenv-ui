@@ -10,7 +10,7 @@ const sleep = (delay: number) =>
 export async function getPackages() {
   const url = `${process.env.OBSENV_API}/package_versions`
   console.log(url)
-  const res = await fetch(url, { next: { tags: ['package_versions'] } })
+  const res = await fetch(url, { cache: 'no-store' })
   if (!res.ok) {
     throw new Error('Unable to fetch package data.')
   }
@@ -28,11 +28,7 @@ export async function getAuthedGroup() {
 }
 
 export async function updatePackage(info: PackageUpdate) {
-  let api_server = process.env.OBSENV_API
-  if (api_server === undefined) {
-    throw Error('OBSENV_API must be provided to the application!')
-  }
-  const url = `${api_server}/update_package`
+  const url = `${process.env.OBSENV_API}/update_package`
   console.log(url)
   const res = await fetch(url, {
     method: 'POST',
