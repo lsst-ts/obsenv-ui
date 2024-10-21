@@ -8,7 +8,7 @@ import { getAuthedGroup } from '@/app/lib/actions'
 const Banner = () => {
   const [authGroup, setAuthGroup] = useState('')
   const { userState } = useUserState(authGroup)
-  const { authedUser, setAuthedUser } = useContext(AuthContext)
+  const { setAuthedUser } = useContext(AuthContext)
 
   useEffect(() => {
     const findAuthGroup = async () => {
@@ -20,11 +20,10 @@ const Banner = () => {
 
   useEffect(() => {
     setAuthedUser({
-      ...authedUser,
       username: userState.data.username,
       authorized: userState.authorized,
     })
-  }, [setAuthedUser, authedUser, userState.data.username, userState.authorized])
+  }, [setAuthedUser, userState.data.username, userState.authorized])
 
   return (
     <header className="fixed top-0 z-10 flex grid h-24 w-screen grid-cols-3 flex-row backdrop-blur-lg md:grid-cols-5">
