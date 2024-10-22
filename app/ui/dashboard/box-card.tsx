@@ -2,6 +2,7 @@
 
 import { useContext } from 'react'
 import clsx from 'clsx'
+import { useRouter } from 'next/navigation'
 import { PackageInfo } from '@/app/lib/definitions'
 import { AuthContext } from '@/app/lib/auth-context'
 
@@ -11,10 +12,12 @@ const BoxCard = ({
   original_version,
   is_different,
 }: PackageInfo) => {
-  let isAuthed = useContext(AuthContext)?.isAuthed
+  let isAuthed = useContext(AuthContext)?.authedUser.authorized
+  const router = useRouter()
 
   const onClick = () => {
     console.log('Change button clicked')
+    router.push(`/dashboard/change?package_name=${name}`)
   }
 
   return (

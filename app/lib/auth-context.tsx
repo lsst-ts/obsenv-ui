@@ -1,10 +1,11 @@
 'use client'
 
 import { createContext, useState } from 'react'
+import { AuthedUser } from '@/app/lib/definitions'
 
 interface Authed {
-  isAuthed: boolean
-  setAuthed: Function
+  authedUser: AuthedUser
+  setAuthedUser: Function
 }
 
 export const AuthContext = createContext<Authed>({} as Authed)
@@ -15,10 +16,15 @@ export default function AuthProvider({
 }: {
   children: React.ReactNode
 }) {
-  let [isAuthed, setAuthed] = useState(false)
+  let [authedUser, setAuthedUser] = useState({
+    username: 'demouser',
+    authorized: false,
+  } as AuthedUser)
 
   return (
-    <AuthContext.Provider value={{ isAuthed: isAuthed, setAuthed: setAuthed }}>
+    <AuthContext.Provider
+      value={{ authedUser: authedUser, setAuthedUser: setAuthedUser }}
+    >
       {children}
     </AuthContext.Provider>
   )
