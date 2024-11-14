@@ -35,6 +35,7 @@ const BoxCard = ({
         <div className="col-span-1 col-end-5">
           <button
             aria-disabled={!isAuthed}
+            disabled={!isAuthed}
             onClick={onClick}
             className={clsx(
               'rounded',
