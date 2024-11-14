@@ -1,16 +1,16 @@
 const SkeletonBox = () => {
   return (
-    <div className="max-w-sm overflow-hidden rounded bg-gray-900 shadow-md shadow-gray-400">
-      <div className="item-center animate-pulse bg-gray-600 py-3" />
+    <div className="max-w-sm overflow-hidden rounded bg-gray-400 shadow-md shadow-gray-600 dark:bg-gray-900 dark:shadow-gray-400">
+      <div className="item-center animate-pulse bg-gray-200 py-3 dark:bg-gray-600" />
       <div className="m-2 grid grid-cols-3">
-        <div className="col-span-1 h-10 animate-pulse bg-gray-600" />
-        <div className="col-span-2 h-10 animate-pulse bg-gray-600 px-2" />
-        <div className="col-span-1 h-10 animate-pulse bg-gray-600" />
-        <div className="col-span-2 h-10 animate-pulse bg-gray-600 px-2" />
+        <div className="col-span-1 h-10 animate-pulse bg-gray-200 dark:bg-gray-600" />
+        <div className="col-span-2 h-10 animate-pulse bg-gray-200 px-2 dark:bg-gray-600" />
+        <div className="col-span-1 h-10 animate-pulse bg-gray-200 dark:bg-gray-600" />
+        <div className="col-span-2 h-10 animate-pulse bg-gray-200 px-2 dark:bg-gray-600" />
       </div>
       <div className="mx-4 mb-4 grid grid-cols-4">
         <div className="col-span-1 col-end-5">
-          <div className="h-10 animate-pulse rounded bg-gray-800 p-3 shadow-md shadow-gray-400" />
+          <div className="h-10 animate-pulse rounded bg-gray-300 p-3 shadow-md shadow-gray-600 dark:bg-gray-800 dark:shadow-gray-400" />
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@ const SkeletonFooter = () => {
     <footer>
       <div className="items-centered flex flex-row">
         <p>Last Updated:</p>
-        <div className="items-centered h-4 flex-grow animate-pulse bg-gray-600" />
+        <div className="items-centered h-4 flex-grow animate-pulse bg-gray-300 dark:bg-gray-600" />
       </div>
     </footer>
   )
