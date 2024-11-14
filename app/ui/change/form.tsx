@@ -48,7 +48,7 @@ const Form = () => {
         <input id="isTag" name="isTag" type="checkbox" />
       </div>
       <div className="col-span-1 py-3">
-        <button className="rounded bg-gray-300 p-2 shadow-md shadow-gray-600 dark:bg-gray-800 dark:shadow-gray-400">
+        <button className="rounded bg-gray-300 p-2 shadow-md shadow-gray-600 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-800 active:bg-gray-500 dark:bg-gray-800 dark:shadow-gray-400 dark:hover:bg-gray-600 dark:focus:ring-gray-300 dark:active:bg-gray-700">
           Submit
         </button>
       </div>
