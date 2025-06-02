@@ -3,6 +3,7 @@ import { UserData } from './definitions'
 export const devAuthedUserData = (): UserData => {
   return {
     username: 'vera',
+    uid: 280723,
     name: 'Vera C. Rubin',
     groups: [
       {
@@ -20,6 +21,7 @@ export const devAuthedUserData = (): UserData => {
 export const devUnauthedUserData = (): UserData => {
   return {
     username: 'demouser',
+    uid: 123456,
     name: 'Demo User',
     groups: [
       {

@@ -1,16 +1,22 @@
 'use server'
 
 import { revalidateTag } from 'next/cache'
-import { PackageUpdate } from '@/app/lib/definitions'
+import { AuthedUser, PackageUpdate } from '@/app/lib/definitions'
 import { redirect } from 'next/navigation'
 
 const sleep = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay))
 
-export async function getPackages() {
+export async function getPackages(authedUser: AuthedUser) {
   const url = `${process.env.OBSENV_API}/package_versions`
   console.log(url)
-  const res = await fetch(url, { cache: 'no-store' })
+  const res = await fetch(url, {
+    headers: {
+      'Obsenv-User-Name': authedUser.username,
+      'Obsenv-User-ID': authedUser.uid.toString(),
+    },
+    cache: 'no-store',
+  })
   if (!res.ok) {
     throw new Error('Unable to fetch package data.')
   }

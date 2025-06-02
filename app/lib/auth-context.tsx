@@ -18,6 +18,7 @@ export default function AuthProvider({
 }) {
   let [authedUser, setAuthedUser] = useState({
     username: 'demouser',
+    uid: 12345,
     authorized: false,
   } as AuthedUser)
 
