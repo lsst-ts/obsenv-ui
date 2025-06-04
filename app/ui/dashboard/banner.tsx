@@ -21,9 +21,15 @@ const Banner = () => {
   useEffect(() => {
     setAuthedUser({
       username: userState.data.username,
+      uid: userState.data.uid,
       authorized: userState.authorized,
     })
-  }, [setAuthedUser, userState.data.username, userState.authorized])
+  }, [
+    setAuthedUser,
+    userState.data.username,
+    userState.data.uid,
+    userState.authorized,
+  ])
 
   return (
     <header className="fixed top-0 z-10 flex grid h-24 w-screen grid-cols-3 flex-row backdrop-blur-lg md:grid-cols-5">
