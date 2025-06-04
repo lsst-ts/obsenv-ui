@@ -7,8 +7,8 @@ import { updatePackage } from '@/app/lib/actions'
 import { AuthContext } from '@/app/lib/auth-context'
 
 const Form = () => {
-  let authedUsername = useContext(AuthContext)?.authedUser.username
-  let authedUid = useContext(AuthContext)?.authedUser.uid
+  let { authedUser } = useContext(AuthContext)
+
   const searchParams = useSearchParams()
   const packageName = searchParams.get('package_name')
 
@@ -22,8 +22,8 @@ const Form = () => {
       name: packageName === null ? '' : packageName,
       version: versionValue,
       is_tag: isTagValue,
-      username: authedUsername,
-      userid: authedUid.toString(),
+      username: authedUser.username,
+      userid: authedUser.uid.toString(),
     }
     console.log(info)
     await updatePackage(info)

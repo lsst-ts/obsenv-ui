@@ -1,14 +1,25 @@
-import { useContext } from 'react'
+'use client'
+
+import { useContext, useEffect, useState, useTransition } from 'react'
 import PackageTable from '@/app/ui/dashboard/package-table'
 import Footer from '@/app/ui/dashboard/footer'
 import { getPackages } from '@/app/lib/actions'
 import { PackageResponse } from '@/app/lib/definitions'
 import { AuthContext } from '@/app/lib/auth-context'
 
-const PackageInfoWrapper = async () => {
-  let authedUser = useContext(AuthContext)?.authedUser
+const PackageInfoWrapper = () => {
+  let { authedUser } = useContext(AuthContext)
+  let [response, setResponse] = useState<PackageResponse>({
+    packages: [],
+    fetch_datetime: '',
+  })
+  let [isPending, startTransition] = useTransition()
 
-  const response: PackageResponse = await getPackages(authedUser)
+  useEffect(() => {
+    startTransition(async () => {
+      setResponse(await getPackages(authedUser))
+    })
+  }, [authedUser])
 
   return (
     <>
