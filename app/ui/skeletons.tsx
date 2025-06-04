@@ -35,7 +35,7 @@ const SkeletonPackageTable = () => {
         <h2 className="full-width item-center font-semi-bold p-3 text-center text-xl">
           Package Information
         </h2>
-        <div className="item-center mb-4 grid justify-center gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="item-center mb-4 grid justify-center gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {[...Array(6)].map((_, i) => (
             <SkeletonBox key={i} />
           ))}
