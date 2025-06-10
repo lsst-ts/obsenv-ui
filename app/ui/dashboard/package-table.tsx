@@ -1,4 +1,4 @@
-import BoxCard from './box-card'
+import BoxCard from '@/app/ui/dashboard/box-card'
 import { PackageInfo } from '@/app/lib/definitions'
 
 const PackageTable = ({ packages }: { packages: Array<PackageInfo> }) => {

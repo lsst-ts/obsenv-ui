@@ -13,6 +13,7 @@ export type PackageInfo = {
 export type UserData = {
   name: string
   username: string
+  uid: number
   groups: Array<Group>
 }
 
@@ -29,6 +30,7 @@ export type UserState = {
 
 export type AuthedUser = {
   username: string
+  uid: number
   authorized: boolean
 }
 
@@ -37,4 +39,5 @@ export type PackageUpdate = {
   version: string
   is_tag: boolean
   username: string
+  userid: string
 }
