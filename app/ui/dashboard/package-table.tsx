@@ -1,7 +1,7 @@
 import BoxCard from './box-card'
 import { PackageInfo } from '@/app/lib/definitions'
 
-const PackageTable = async ({ packages }: { packages: Array<PackageInfo> }) => {
+const PackageTable = ({ packages }: { packages: Array<PackageInfo> }) => {
   return (
     <section className="ml-9 mt-24">
       <div className="max-w-m m-5 p-4">

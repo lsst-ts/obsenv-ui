@@ -12,7 +12,9 @@ const BoxCard = ({
   original_version,
   is_different,
 }: PackageInfo) => {
-  let isAuthed = useContext(AuthContext)?.authedUser.authorized
+  const { authedUser } = useContext(AuthContext)
+  let isAuthed =
+    authedUser.authorized === undefined ? false : authedUser.authorized
   const router = useRouter()
 
   const onClick = () => {
