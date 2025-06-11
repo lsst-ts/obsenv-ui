@@ -40,7 +40,10 @@ function useUserState(authGroup: string) {
   if (isLoggedIn) {
     userState.loggedIn = isLoggedIn
     userState.data = data
-
+    console.log('C')
+    console.log(isLoggedIn)
+    console.log(data.username)
+    console.log(data.uid)
     Cookies.set('currentUser', data.username, { httpOnly: true })
     Cookies.set('currentUid', data.uid.toString(), { httpOnly: true })
     console.log('B')
