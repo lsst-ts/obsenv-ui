@@ -17,6 +17,7 @@ export async function getPackages() {
   console.log('A')
   console.log(username)
   console.log(userid)
+  console.log(cookieStore.get('gafaelfawr')?.value)
   const header = new Headers({
     'Obsenv-User-Name': username === undefined ? '' : username,
     'Obsenv-User-ID': userid === undefined ? '' : userid,
