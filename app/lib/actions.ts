@@ -1,6 +1,7 @@
 'use server'
 
 import { revalidateTag } from 'next/cache'
+import { cookies } from 'next/headers'
 import { PackageUpdate } from '@/app/lib/definitions'
 import { redirect } from 'next/navigation'
 
@@ -10,7 +11,14 @@ const sleep = (delay: number) =>
 export async function getPackages() {
   const url = `${process.env.OBSENV_API}/package_versions`
   console.log(url)
-  const res = await fetch(url, { cache: 'no-store' })
+  const cookieStore = await cookies()
+  let username = cookieStore.get('currentUser')?.value
+  let userid = cookieStore.get('currentUid')?.value
+  const header = new Headers({
+    'Obsenv-User-Name': username === undefined ? '' : username,
+    'Obsenv-User-ID': userid === undefined ? '' : userid,
+  })
+  const res = await fetch(url, { headers: header, cache: 'no-store' })
   if (!res.ok) {
     throw new Error('Unable to fetch package data.')
   }

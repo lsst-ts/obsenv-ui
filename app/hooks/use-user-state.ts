@@ -1,5 +1,6 @@
 'use client'
 import useSWR, { Fetcher } from 'swr'
+import Cookies from 'js-cookie'
 import { UserData, UserState } from '@/app/lib/definitions'
 
 const fetcher: Fetcher<UserData, string> = (api: string) =>
@@ -39,6 +40,9 @@ function useUserState(authGroup: string) {
   if (isLoggedIn) {
     userState.loggedIn = isLoggedIn
     userState.data = data
+
+    Cookies.set('currentUser', data.username, { httpOnly: true })
+    Cookies.set('currentUid', data.uid.toString(), { httpOnly: true })
 
     userState.authorized =
       data.groups.find(({ name }) => name === authGroup) === undefined
