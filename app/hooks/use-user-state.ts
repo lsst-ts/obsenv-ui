@@ -43,6 +43,9 @@ function useUserState(authGroup: string) {
 
     Cookies.set('currentUser', data.username, { httpOnly: true })
     Cookies.set('currentUid', data.uid.toString(), { httpOnly: true })
+    console.log('B')
+    console.log(Cookies.get('currentUser'))
+    console.log(Cookies.get('currentUid'))
 
     userState.authorized =
       data.groups.find(({ name }) => name === authGroup) === undefined

@@ -14,6 +14,9 @@ export async function getPackages() {
   const cookieStore = await cookies()
   let username = cookieStore.get('currentUser')?.value
   let userid = cookieStore.get('currentUid')?.value
+  console.log('A')
+  console.log(username)
+  console.log(userid)
   const header = new Headers({
     'Obsenv-User-Name': username === undefined ? '' : username,
     'Obsenv-User-ID': userid === undefined ? '' : userid,
