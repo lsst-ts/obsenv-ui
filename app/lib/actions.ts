@@ -2,8 +2,9 @@
 
 import { revalidateTag } from 'next/cache'
 import { cookies } from 'next/headers'
-import { PackageUpdate } from '@/app/lib/definitions'
 import { redirect } from 'next/navigation'
+import { getCookie } from 'cookies-next'
+import { PackageUpdate } from '@/app/lib/definitions'
 
 const sleep = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay))
@@ -11,13 +12,9 @@ const sleep = (delay: number) =>
 export async function getPackages() {
   const url = `${process.env.OBSENV_API}/package_versions`
   console.log(url)
-  const cookieStore = await cookies()
-  let username = cookieStore.get('currentUser')?.value
-  let userid = cookieStore.get('currentUid')?.value
-  console.log('A')
-  console.log(username)
-  console.log(userid)
-  console.log(cookieStore.get('gafaelfawr')?.value)
+  let username = await getCookie('currentUser', { cookies })
+  let userid = await getCookie('currentUid', { cookies })
+
   const header = new Headers({
     'Obsenv-User-Name': username === undefined ? '' : username,
     'Obsenv-User-ID': userid === undefined ? '' : userid,

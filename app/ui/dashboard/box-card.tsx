@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { PackageInfo } from '@/app/lib/definitions'
@@ -13,8 +13,16 @@ const BoxCard = ({
   is_different,
 }: PackageInfo) => {
   const { authedUser } = useContext(AuthContext)
-  let isAuthed =
-    authedUser.authorized === undefined ? false : authedUser.authorized
+  const [isAuthed, setIsAuthed] = useState(false)
+
+  useEffect(() => {
+    if (authedUser !== undefined) {
+      setIsAuthed(
+        authedUser.authorized === undefined ? false : authedUser.authorized,
+      )
+    }
+  }, [authedUser, isAuthed])
+
   const router = useRouter()
 
   const onClick = () => {

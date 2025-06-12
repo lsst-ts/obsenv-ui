@@ -1,6 +1,7 @@
 'use client'
 
 import { useContext, useEffect, useState } from 'react'
+import { setCookie } from 'cookies-next'
 import useUserState from '@/app/hooks/use-user-state'
 import { AuthContext } from '@/app/lib/auth-context'
 import { getAuthedGroup } from '@/app/lib/actions'
@@ -24,6 +25,13 @@ const Banner = () => {
       uid: userState.data.uid,
       authorized: userState.authorized,
     })
+
+    setCookie('currentUser', userState.data.username)
+    let userid =
+      userState.data.uid === undefined
+        ? userState.data.uid
+        : userState.data.uid.toString()
+    setCookie('currentUid', userid)
   }, [
     setAuthedUser,
     userState.data.username,
