@@ -3,11 +3,7 @@ import Footer from '@/app/ui/dashboard/footer'
 import { PackageResponse, SearchParams } from '@/app/lib/definitions'
 import { getApiUrl } from '@/app/lib/actions'
 
-const PackageInfoWrapper = async ({
-  searchParams,
-}: {
-  searchParams: SearchParams
-}) => {
+const PackageInfoWrapper = async ({ searchParams }: { searchParams: any }) => {
   if (searchParams.currentUser === undefined) {
     return
   }

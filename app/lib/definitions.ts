@@ -42,4 +42,5 @@ export type PackageUpdate = {
   userid: string
 }
 
-export type SearchParams = Record<string, string | string[] | undefined>
+// export type SearchParams = Record<string, string | string[] | undefined>
+export type SearchParams = { username: string; uid: string }
