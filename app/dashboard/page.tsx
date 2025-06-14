@@ -1,16 +1,18 @@
-import { Suspense } from 'react'
+import { Suspense, use } from 'react'
 import Banner from '@/app/ui/dashboard/banner'
 import Toolbar from '@/app/ui/dashboard/toolbar'
-import PackageInfoWrapper from '@/app/ui/dashboard/package-info-wrapper'
 import { Skeleton } from '@/app/ui/skeletons'
+import PackageInfoWrapper from '@/app/ui/dashboard/package-info-wrapper'
+import { SearchParams } from '@/app/lib/definitions'
 
-const Dashboard = () => {
+const Dashboard = async ({ searchParams }: { searchParams: SearchParams }) => {
+  const sp = await searchParams
   return (
     <main>
       <Banner />
       <Toolbar />
       <Suspense fallback={<Skeleton />}>
-        <PackageInfoWrapper />
+        sp.username && <PackageInfoWrapper searchParams={sp} />
       </Suspense>
     </main>
   )

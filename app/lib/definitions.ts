@@ -29,7 +29,7 @@ export type UserState = {
 }
 
 export type AuthedUser = {
-  username: string
+  username: string | undefined
   uid: number
   authorized: boolean
 }
@@ -41,3 +41,5 @@ export type PackageUpdate = {
   username: string
   userid: string
 }
+
+export type SearchParams = Record<string, string | string[] | undefined>

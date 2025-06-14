@@ -3,15 +3,17 @@
 import { useContext } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { PackageUpdate } from '@/app/lib/definitions'
-import { updatePackage } from '@/app/lib/actions'
+import { updatePackage } from '@/app/lib/data_fetching'
 import { AuthContext } from '@/app/lib/auth-context'
 
 const Form = () => {
-  let { authedUser } = useContext(AuthContext)
-  let authedUsername = authedUser.username
-  let authedUserid =
-    authedUser.uid === undefined ? '000' : authedUser.uid.toString()
   const searchParams = useSearchParams()
+  let { authedUser } = useContext(AuthContext)
+  if (authedUser.username === undefined) {
+    return
+  }
+  let authedUsername = authedUser.username
+  let authedUserid = authedUser.uid.toString()
   const packageName = searchParams.get('package_name')
 
   const dispatch = async (formData: FormData) => {

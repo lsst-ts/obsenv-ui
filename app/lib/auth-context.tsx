@@ -17,7 +17,8 @@ export default function AuthProvider({
   children: React.ReactNode
 }) {
   let [authedUser, setAuthedUser] = useState({
-    username: 'demouser',
+    username: undefined,
+    uid: -1,
     authorized: false,
   } as AuthedUser)
 

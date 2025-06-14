@@ -14,6 +14,12 @@ const BoxCard = ({
 }: PackageInfo) => {
   const { authedUser } = useContext(AuthContext)
   const [isAuthed, setIsAuthed] = useState(false)
+  const router = useRouter()
+
+  const onClick = () => {
+    console.log('Change button clicked')
+    router.push(`/dashboard/change?package_name=${name}`)
+  }
 
   useEffect(() => {
     if (authedUser !== undefined) {
@@ -22,13 +28,6 @@ const BoxCard = ({
       )
     }
   }, [authedUser, isAuthed])
-
-  const router = useRouter()
-
-  const onClick = () => {
-    console.log('Change button clicked')
-    router.push(`/dashboard/change?package_name=${name}`)
-  }
 
   return (
     <div className="h-350 w-375 m-2 max-w-sm overflow-hidden rounded bg-gray-400 shadow-md shadow-gray-600 dark:bg-gray-900 dark:shadow-gray-400">
