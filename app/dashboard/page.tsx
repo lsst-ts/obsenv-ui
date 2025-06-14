@@ -12,7 +12,7 @@ const Dashboard = async (props: { searchParams: Promise<SearchParams> }) => {
       <Banner />
       <Toolbar />
       <Suspense fallback={<Skeleton />}>
-        searchParams.username &&{' '}
+        searchParams.username &&
         <PackageInfoWrapper searchParams={searchParams} />
       </Suspense>
     </main>
