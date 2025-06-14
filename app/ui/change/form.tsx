@@ -39,19 +39,23 @@ const Form = () => {
         <label>Package Name: {packageName}</label>
       </div>
       <div className="col-span-4 py-3">
-        <label className="pr-2">Version</label>
-        <input
-          id="version"
-          name="version"
-          type="text"
-          defaultValue=""
-          className="text-black"
-          required
-        />
+        <label className="pr-2">
+          Version
+          <input
+            id="version"
+            name="version"
+            type="text"
+            defaultValue=""
+            className="text-black"
+            required
+          />
+        </label>
       </div>
       <div className="col-span-4 py-3">
-        <label className="pr-2">Is Tag?</label>
-        <input id="isTag" name="isTag" type="checkbox" />
+        <label className="pr-2">
+          Is Tag?
+          <input id="isTag" name="isTag" type="checkbox" />
+        </label>
       </div>
       <div className="col-span-1 py-3">
         <button className="rounded bg-gray-300 p-2 shadow-md shadow-gray-600 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-800 active:bg-gray-500 dark:bg-gray-800 dark:shadow-gray-400 dark:hover:bg-gray-600 dark:focus:ring-gray-300 dark:active:bg-gray-700">
