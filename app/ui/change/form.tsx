@@ -13,7 +13,6 @@ const Form = () => {
     return
   }
   let authedUsername = authedUser.username
-  let authedUserid = authedUser.uid.toString()
   const packageName = searchParams.get('package_name')
 
   const dispatch = async (formData: FormData) => {
@@ -27,7 +26,6 @@ const Form = () => {
       version: versionValue,
       is_tag: isTagValue,
       username: authedUsername,
-      userid: authedUserid,
     }
     console.log(info)
     await updatePackage(info)

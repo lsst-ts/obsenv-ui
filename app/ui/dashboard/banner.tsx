@@ -25,15 +25,9 @@ const Banner = () => {
   useEffect(() => {
     setAuthedUser({
       username: userState.data.username,
-      uid: userState.data.uid,
       authorized: userState.authorized,
     })
-  }, [
-    setAuthedUser,
-    userState.data.username,
-    userState.data.uid,
-    userState.authorized,
-  ])
+  }, [setAuthedUser, userState.data.username, userState.authorized])
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams)
@@ -41,9 +35,8 @@ const Banner = () => {
       return
     }
     params.set('currentUser', authedUser.username)
-    params.set('currentUid', authedUser.uid.toString())
     replace(`${pathname}?${params.toString()}`)
-  }, [authedUser.username, authedUser.uid, pathname, replace, searchParams])
+  }, [authedUser.username, pathname, replace, searchParams])
 
   return (
     <header className="fixed top-0 z-10 flex grid h-24 w-screen grid-cols-3 flex-row backdrop-blur-lg md:grid-cols-5">
