@@ -1,19 +1,20 @@
 'use client'
 
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { PackageUpdate } from '@/app/lib/definitions'
 import { updatePackage } from '@/app/lib/data_fetching'
-import { AuthContext } from '@/app/lib/auth-context'
+// import { AuthContext } from '@/app/lib/auth-context'
 
 const Form = () => {
   const searchParams = useSearchParams()
-  let { authedUser } = useContext(AuthContext)
-  if (authedUser.username === undefined) {
-    return
-  }
-  let authedUsername = authedUser.username
+  // let { authedUser } = useContext(AuthContext)
+  // if (authedUser.username === undefined) {
+  //   return
+  // }
+  // let authedUsername = authedUser.username
   const packageName = searchParams.get('package_name')
+  const username = `${searchParams.get('currentUser')}`
 
   const dispatch = async (formData: FormData) => {
     console.log('OK')
@@ -25,7 +26,7 @@ const Form = () => {
       name: packageName === null ? '' : packageName,
       version: versionValue,
       is_tag: isTagValue,
-      username: authedUsername,
+      username: username,
     }
     console.log(info)
     await updatePackage(info)

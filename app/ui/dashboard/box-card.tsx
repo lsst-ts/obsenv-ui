@@ -18,7 +18,9 @@ const BoxCard = ({
 
   const onClick = () => {
     console.log('Change button clicked')
-    router.push(`/dashboard/change?package_name=${name}`)
+    router.push(
+      `/dashboard/change?package_name=${name}&&currentUser=${authedUser.username}`,
+    )
   }
 
   useEffect(() => {

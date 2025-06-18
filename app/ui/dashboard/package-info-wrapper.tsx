@@ -8,9 +8,9 @@ const PackageInfoWrapper = async ({
 }: {
   searchParams: SearchParams
 }) => {
-  if (searchParams.currentUser === undefined) {
-    return
-  }
+  // if (searchParams.currentUser === undefined) {
+  //   return
+  // }
   console.log(searchParams.currentUser)
   const uri = await getApiUrl()
   const url = `${uri}/package_versions`
@@ -18,7 +18,7 @@ const PackageInfoWrapper = async ({
   const header = new Headers({
     'Obsenv-User-Name': `${searchParams.currentUser}`,
   })
-  const res = await fetch(url, { headers: header, cache: 'no-store' })
+  const res = await fetch(url, { headers: header, cache: 'force-cache' })
   if (!res.ok) {
     throw new Error('Unable to fetch package data.')
   }
