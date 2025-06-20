@@ -1,6 +1,6 @@
 'use server'
 
-import { revalidateTag } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 export async function getAuthedGroup() {
   let authedGroup = process.env.AUTH_GROUP
@@ -13,5 +13,6 @@ export async function getApiUrl() {
 }
 
 export async function refreshPackageInfo() {
-  revalidateTag('package_versions')
+  revalidatePath('/dashboard')
+  // revalidateTag('package_versions')
 }
