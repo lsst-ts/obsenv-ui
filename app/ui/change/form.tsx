@@ -4,6 +4,7 @@
 import { useSearchParams } from 'next/navigation'
 import { PackageUpdate } from '@/app/lib/definitions'
 import { updatePackage } from '@/app/lib/data_fetching'
+import { refreshPackageInfo } from '@/app/lib/actions'
 // import { AuthContext } from '@/app/lib/auth-context'
 
 const Form = () => {
@@ -30,6 +31,7 @@ const Form = () => {
     }
     console.log(info)
     await updatePackage(info)
+    await refreshPackageInfo()
   }
 
   return (
