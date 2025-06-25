@@ -2,6 +2,7 @@
 
 // import { useContext } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { getCookie } from 'cookies-next'
 import { PackageUpdate } from '@/app/lib/definitions'
 import { updatePackage } from '@/app/lib/data_fetching'
 import { refreshPackageInfo } from '@/app/lib/actions'
@@ -15,7 +16,8 @@ const Form = () => {
   // }
   // let authedUsername = authedUser.username
   const packageName = searchParams.get('package_name')
-  const username = `${searchParams.get('currentUser')}`
+  // const username = `${searchParams.get('currentUser')}`
+  const uid = getCookie('user-id')!.toString()
 
   const dispatch = async (formData: FormData) => {
     console.log('OK')
@@ -27,7 +29,7 @@ const Form = () => {
       name: packageName === null ? '' : packageName,
       version: versionValue,
       is_tag: isTagValue,
-      username: username,
+      userid: uid,
     }
     console.log(info)
     await updatePackage(info)

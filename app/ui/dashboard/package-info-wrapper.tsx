@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers'
 import PackageTable from '@/app/ui/dashboard/package-table'
 import Footer from '@/app/ui/dashboard/footer'
 import { PackageResponse, SearchParams } from '@/app/lib/definitions'
@@ -11,12 +12,13 @@ const PackageInfoWrapper = async ({
   // if (searchParams.currentUser === undefined) {
   //   return
   // }
-  console.log(searchParams.currentUser)
+  // console.log(searchParams.currentUser)
+  const uid = (await cookies()).get('user-id')!.value
   const uri = await getApiUrl()
   const url = `${uri}/package_versions`
   console.log(url)
   const header = new Headers({
-    'Obsenv-User-Name': `${searchParams.currentUser}`,
+    'Obsenv-User-Id': uid,
   })
   const res = await fetch(url, { headers: header, cache: 'force-cache' })
   if (!res.ok) {
