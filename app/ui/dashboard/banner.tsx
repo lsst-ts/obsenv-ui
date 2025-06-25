@@ -1,7 +1,6 @@
 'use client'
 
 import { useContext, useEffect, useState } from 'react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { setCookie } from 'cookies-next'
 import useUserState from '@/app/hooks/use-user-state'
 import { AuthContext } from '@/app/lib/auth-context'
@@ -11,9 +10,6 @@ const Banner = () => {
   const [authGroup, setAuthGroup] = useState('')
   const { userState } = useUserState(authGroup)
   const { authedUser, setAuthedUser } = useContext(AuthContext)
-  const searchParams = useSearchParams()
-  const { replace } = useRouter()
-  const pathname = usePathname()
 
   useEffect(() => {
     const findAuthGroup = async () => {
@@ -29,23 +25,14 @@ const Banner = () => {
       uid: userState.data.uid,
       authorized: userState.authorized,
     })
+    console.log(`Set cookie ${userState.data.uid}`)
+    setCookie('user-id', userState.data.uid)
   }, [
     setAuthedUser,
     userState.data.username,
     userState.data.uid,
     userState.authorized,
   ])
-
-  // useEffect(() => {
-  //   const params = new URLSearchParams(searchParams)
-  //   if (authedUser.username === undefined) {
-  //     return
-  //   }
-  //   params.set('currentUser', authedUser.username)
-  //   replace(`${pathname}?${params.toString()}`)
-  // }, [authedUser.username, pathname, replace, searchParams])
-
-  setCookie('user-id', authedUser.uid)
 
   return (
     <header className="fixed top-0 z-10 flex grid h-24 w-screen grid-cols-3 flex-row backdrop-blur-lg md:grid-cols-5">

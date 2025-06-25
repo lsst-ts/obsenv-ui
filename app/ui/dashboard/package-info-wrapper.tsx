@@ -1,19 +1,15 @@
 import { cookies } from 'next/headers'
 import PackageTable from '@/app/ui/dashboard/package-table'
 import Footer from '@/app/ui/dashboard/footer'
-import { PackageResponse, SearchParams } from '@/app/lib/definitions'
+import { PackageResponse } from '@/app/lib/definitions'
 import { getApiUrl } from '@/app/lib/actions'
 
-const PackageInfoWrapper = async ({
-  searchParams,
-}: {
-  searchParams: SearchParams
-}) => {
-  // if (searchParams.currentUser === undefined) {
-  //   return
-  // }
-  // console.log(searchParams.currentUser)
-  const uid = (await cookies()).get('user-id')!.value
+const PackageInfoWrapper = async () => {
+  const uid = (await cookies()).get('user-id')?.value ?? '-1'
+  if (uid === '-1') {
+    console.log('Blocking')
+    return
+  }
   const uri = await getApiUrl()
   const url = `${uri}/package_versions`
   console.log(url)

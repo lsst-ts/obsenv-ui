@@ -40,5 +40,3 @@ export type PackageUpdate = {
   is_tag: boolean
   userid: string
 }
-
-export type SearchParams = { currentUser: string }
