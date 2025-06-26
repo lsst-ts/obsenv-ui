@@ -8,7 +8,7 @@ const PackageInfoWrapper = async () => {
   const uid = (await cookies()).get('user-id')?.value ?? '-1'
   if (uid === '-1') {
     console.log('Blocking')
-    return
+    return null
   }
   console.log(`A: ${uid}`)
   const uri = await getApiUrl()
