@@ -10,6 +10,7 @@ const PackageInfoWrapper = async () => {
     console.log('Blocking')
     return
   }
+  console.log(`A: ${uid}`)
   const uri = await getApiUrl()
   const url = `${uri}/package_versions`
   console.log(url)
