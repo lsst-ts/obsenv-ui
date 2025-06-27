@@ -6,8 +6,8 @@ import { getApiUrl } from '@/app/lib/actions'
 
 const PackageInfoWrapper = async () => {
   const uid = (await cookies()).get('user-id')?.value ?? '-1'
-  if (uid === '-1') {
-    console.log('Blocking')
+  if (uid === '-1' || uid === undefined || uid === 'undefined') {
+    console.log(`Blocking ${uid}`)
     return null
   }
   console.log(`A: ${uid}`)
