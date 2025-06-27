@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { PackageInfo } from '@/app/lib/definitions'
@@ -12,13 +12,22 @@ const BoxCard = ({
   original_version,
   is_different,
 }: PackageInfo) => {
-  let isAuthed = useContext(AuthContext)?.authedUser.authorized
+  const { authedUser } = useContext(AuthContext)
+  const [isAuthed, setIsAuthed] = useState(false)
   const router = useRouter()
 
   const onClick = () => {
     console.log('Change button clicked')
     router.push(`/dashboard/change?package_name=${name}`)
   }
+
+  useEffect(() => {
+    if (authedUser !== undefined) {
+      setIsAuthed(
+        authedUser.authorized === undefined ? false : authedUser.authorized,
+      )
+    }
+  }, [authedUser, isAuthed])
 
   return (
     <div className="h-350 w-375 m-2 max-w-sm overflow-hidden rounded bg-gray-400 shadow-md shadow-gray-600 dark:bg-gray-900 dark:shadow-gray-400">

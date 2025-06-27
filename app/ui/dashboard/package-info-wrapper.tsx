@@ -1,10 +1,27 @@
+import { cookies } from 'next/headers'
 import PackageTable from '@/app/ui/dashboard/package-table'
 import Footer from '@/app/ui/dashboard/footer'
-import { getPackages } from '@/app/lib/actions'
 import { PackageResponse } from '@/app/lib/definitions'
+import { getApiUrl } from '@/app/lib/actions'
 
 const PackageInfoWrapper = async () => {
-  const response: PackageResponse = await getPackages()
+  const uid = (await cookies()).get('user-id')?.value ?? '-1'
+  if (uid === '-1' || uid === undefined || uid === 'undefined') {
+    console.log(`Blocking ${uid}`)
+    return null
+  }
+  console.log(`A: ${uid}`)
+  const uri = await getApiUrl()
+  const url = `${uri}/package_versions`
+  console.log(url)
+  const header = new Headers({
+    'Obsenv-User-Id': uid,
+  })
+  const res = await fetch(url, { headers: header, cache: 'force-cache' })
+  if (!res.ok) {
+    throw new Error('Unable to fetch package data.')
+  }
+  const response: PackageResponse = await res.json()
 
   return (
     <>
